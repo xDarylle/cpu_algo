@@ -19,19 +19,81 @@ namespace FCFS
 
         List<int> _exetime = new List<int>();
         List<int> _waittime = new List<int>();
-
         List<TextBox> _txtbox = new List<TextBox>();
+        List<TextBox> _waitbox = new List<TextBox>();
         List<Label> _labels = new List<Label>();
         List<string> _process = new List<string>();
 
-        List<TextBox> _waitbox = new List<TextBox>();
+        int process;
+        int numTxtBox = 4;
 
-        int process = 0;
-        int x = 40;
-        int y = 0;
+        int x;
+        int y;
+
         public SJF()
         {
             InitializeComponent();
+        }
+
+        public void addBox() {
+
+            TextBox txtburstTime = new TextBox();
+            txtburstTime.Width = 230;
+            txtburstTime.Font = new Font(txtburstTime.Font.FontFamily, 16);
+            txtburstTime.Location = new Point(60, y);
+            _txtbox.Add(txtburstTime);
+            processPanel.Controls.Add(txtburstTime);
+            processPanel.AutoScroll = true;
+
+
+            TextBox txtwatingTime = new TextBox();
+            txtwatingTime.Width = 250;
+            txtwatingTime.Font = new Font(txtwatingTime.Font.FontFamily, 16);
+            txtwatingTime.Location = new Point(x, y);
+            txtwatingTime.ReadOnly = true;
+            _waitbox.Add(txtwatingTime);
+            executePanel.Controls.Add(txtwatingTime);
+            executePanel.AutoScroll = true;
+
+            Label processlbl = new Label();
+            processlbl.Font = new Font(processlbl.Font.FontFamily, 16);
+            processlbl.Location = new Point(10, y);
+            _labels.Add(processlbl);
+            processlbl.Text = "P" + process;
+            processPanel.Controls.Add(processlbl);
+
+            y += 40;
+            process++;
+        }
+
+        private void initialize() {
+            for (int i = 0; i < numTxtBox; i++) {
+                addBox();
+            }
+            count.Text = numTxtBox.ToString();
+        }
+
+        private void setDefaultVal() {
+            x = 40;
+            y = 0;
+            process = 0;
+        }
+
+        private void clearListBox() {
+            _txtbox.Clear();
+            _waitbox.Clear();
+            _labels.Clear();
+        }
+
+        private void clearList() {
+            _exetime.Clear();
+            _waittime.Clear();
+            _process.Clear();
+        }
+
+        private void clearPanel() {
+            executePanel.Controls.Clear();
+            processPanel.Controls.Clear();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -69,21 +131,9 @@ namespace FCFS
             processPanel.HorizontalScroll.Visible = false;
             processPanel.HorizontalScroll.Maximum = 0;
             processPanel.AutoScroll = false;
-        }
 
-        private void SJF_MouseDown(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void SJF_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-        }
-
-        private void SJF_MouseUp(object sender, MouseEventArgs e)
-        {
-            
+            setDefaultVal();
+            initialize();
         }
 
         private void panel2_MouseUp(object sender, MouseEventArgs e)
@@ -108,32 +158,9 @@ namespace FCFS
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            y += 40;
-            process++;
-            TextBox txtburstTime = new TextBox();
-            txtburstTime.Width = 230;
-            txtburstTime.Font = new Font(txtburstTime.Font.FontFamily, 16);
-            txtburstTime.Location = new Point(60, y);
-            _txtbox.Add(txtburstTime);
-            processPanel.Controls.Add(txtburstTime);
-            processPanel.AutoScroll = true;
-
-
-            TextBox txtwatingTime = new TextBox();
-            txtwatingTime.Width = 250;
-            txtwatingTime.Font = new Font(txtwatingTime.Font.FontFamily, 16);
-            txtwatingTime.Location = new Point(x, y);
-            txtwatingTime.ReadOnly = true;
-            _waitbox.Add(txtwatingTime);
-            executePanel.Controls.Add(txtwatingTime);
-            executePanel.AutoScroll = true;
-
-            Label processlbl = new Label();
-            processlbl.Font = new Font(processlbl.Font.FontFamily, 16);
-            processlbl.Location = new Point(10, y);
-            _labels.Add(processlbl);
-            processlbl.Text = "P" + process;
-            processPanel.Controls.Add(processlbl);
+            addBox();
+            numTxtBox++;
+            count.Text = numTxtBox.ToString();
 
         }
 
@@ -142,10 +169,15 @@ namespace FCFS
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
             executePanel.Controls.RemoveAt(executePanel.Controls.Count - 1);
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
+           
             _txtbox.RemoveAt(_txtbox.Count - 1);
             _labels.RemoveAt(_labels.Count - 1);
+           
             process--;
             y -= 40;
+
+            numTxtBox--;
+            count.Text = numTxtBox.ToString();
         }
 
         private void processPanel_Paint(object sender, PaintEventArgs e)
@@ -156,14 +188,14 @@ namespace FCFS
         private void Startbtn_Click(object sender, EventArgs e)
         {
 
-            foreach (TextBox txt in _txtbox)
+            foreach (var txt in _txtbox)
             {
                 _exetime.Add(int.Parse(txt.Text));
             }
 
 
             int[] _copy = new int[_exetime.Count];
-            //int[] _wtime = new int[_exetime.Count];
+
             int ave = 0;
 
             _waittime.Add(0);
@@ -189,7 +221,6 @@ namespace FCFS
 
            ave = ave / 4;
             
-           //int index = 0;
 
            for (int i = 0; i < _waittime.Count; i++)
            {
@@ -197,18 +228,29 @@ namespace FCFS
                _txtbox[i].Text = _copy[i].ToString();
                _labels[i].Text = _process[i];
            }
+
+           clearList();
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < _txtbox.Count; i++)
-            {
-                _txtbox[i].Clear();
-            }
+            clearList();
+            clearListBox();
+            clearPanel();
+            setDefaultVal();
+            initialize();
+        }
 
-            for (int i = 0; i < _waitbox.Count; i++)
-            {
-                _waitbox[i].Clear();
+        private void count_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter)) {
+                clearListBox();
+                clearPanel();
+                setDefaultVal();
+
+                numTxtBox = int.Parse(count.Text);
+
+                initialize();
+
             }
         }
     }

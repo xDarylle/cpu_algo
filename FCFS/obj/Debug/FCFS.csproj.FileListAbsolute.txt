@@ -10,3 +10,14 @@ c:\users\drilo\documents\visual studio 2013\Projects\FCFS\FCFS\bin\Debug\Bunifu_
 c:\users\drilo\documents\visual studio 2013\Projects\FCFS\FCFS\obj\Debug\FCFS.FCFS_Main.resources
 c:\users\drilo\documents\visual studio 2013\Projects\FCFS\FCFS\obj\Debug\FCFS.Start.resources
 C:\Users\drilo\documents\visual studio 2013\Projects\FCFS\FCFS\obj\Debug\FCFS.SJF.resources
+C:\Users\Darylle\CPU_algorithm\FCFS\bin\Debug\FCFS.exe.config
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.exe
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.pdb
+C:\Users\Darylle\CPU_algorithm\FCFS\bin\Debug\FCFS.exe
+C:\Users\Darylle\CPU_algorithm\FCFS\bin\Debug\FCFS.pdb
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.csprojResolveAssemblyReference.cache
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.FCFS_Main.resources
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.SJF.resources
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.Start.resources
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.Properties.Resources.resources
+C:\Users\Darylle\CPU_algorithm\FCFS\obj\Debug\FCFS.csproj.GenerateResource.Cache
