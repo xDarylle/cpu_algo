@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,7 +40,7 @@ namespace FCFS
             TextBox txtburstTime = new TextBox();
             txtburstTime.Width = 230;
             txtburstTime.Font = new Font(txtburstTime.Font.FontFamily, 16);
-            txtburstTime.Location = new Point(60, y);
+            txtburstTime.Location = new Point(100, y);
             _txtbox.Add(txtburstTime);
             processPanel.Controls.Add(txtburstTime);
             processPanel.AutoScroll = true;
@@ -49,15 +49,15 @@ namespace FCFS
             TextBox txtwatingTime = new TextBox();
             txtwatingTime.Width = 250;
             txtwatingTime.Font = new Font(txtwatingTime.Font.FontFamily, 16);
-            txtwatingTime.Location = new Point(x, y);
+            txtwatingTime.Location = new Point(360, y);
             txtwatingTime.ReadOnly = true;
             _waitbox.Add(txtwatingTime);
-            executePanel.Controls.Add(txtwatingTime);
-            executePanel.AutoScroll = true;
+            processPanel.Controls.Add(txtwatingTime);
+            processPanel.AutoScroll = true;
 
             Label processlbl = new Label();
             processlbl.Font = new Font(processlbl.Font.FontFamily, 16);
-            processlbl.Location = new Point(10, y);
+            processlbl.Location = new Point(30, y);
             _labels.Add(processlbl);
             processlbl.Text = "P" + process;
             processPanel.Controls.Add(processlbl);
@@ -92,7 +92,7 @@ namespace FCFS
         }
 
         private void clearPanel() {
-            executePanel.Controls.Clear();
+            processPanel.Controls.Clear();
             processPanel.Controls.Clear();
         }
 
@@ -113,18 +113,6 @@ namespace FCFS
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 118, 190);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-
-
-            dataGridView2.BorderStyle = BorderStyle.None;
-            dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            dataGridView2.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridView2.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
-
-            dataGridView2.EnableHeadersVisualStyles = false;
-            dataGridView2.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridView2.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(234, 167, 70);
-            dataGridView2.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             processPanel.AutoScroll = false;
             processPanel.HorizontalScroll.Enabled = false;
@@ -167,7 +155,7 @@ namespace FCFS
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
-            executePanel.Controls.RemoveAt(executePanel.Controls.Count - 1);
+            processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
            
             _txtbox.RemoveAt(_txtbox.Count - 1);
@@ -196,7 +184,7 @@ namespace FCFS
 
             int[] _copy = new int[_exetime.Count];
 
-            int ave = 0;
+            float ave = 0;
 
             _waittime.Add(0);
 
@@ -220,7 +208,8 @@ namespace FCFS
            }
 
            ave = ave / 4;
-            
+
+           AverageWaitingTIme.Text = ave.ToString();
 
            for (int i = 0; i < _waittime.Count; i++)
            {
