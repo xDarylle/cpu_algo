@@ -30,6 +30,8 @@ namespace FCFS
         int x;
         int y;
 
+        int ratio = 30;
+
         public SJF()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace FCFS
             txtwatingTime.Font = new Font(txtwatingTime.Font.FontFamily, 16);
             txtwatingTime.Location = new Point(360, y);
             txtwatingTime.ReadOnly = true;
+            txtwatingTime.TabStop = false;
             _waitbox.Add(txtwatingTime);
             processPanel.Controls.Add(txtwatingTime);
             processPanel.AutoScroll = true;
@@ -67,6 +70,12 @@ namespace FCFS
         }
 
         private void initialize() {
+            clearList();
+            clearListBox();
+            clearPanel();
+            dataGridView1.Columns.Clear();
+            
+
             for (int i = 0; i < numTxtBox; i++) {
                 addBox();
             }
@@ -185,19 +194,18 @@ namespace FCFS
 
             int[] _copy = new int[_exetime.Count];
 
+            
+
             float ave = 0;
 
             _waittime.Add(0);
-            dataGridView1.Columns[0].Width = 50;
-
+           
             _exetime.CopyTo(_copy);
 
            Array.Sort(_copy);
-            
+           
            for (int i = 0; i < _exetime.Count; i++ ) {
-               if(i + 1 < _exetime.Count) {
                    _waittime.Add(_waittime[i] + _copy[i]);
-               }
            }
 
            for (int i = 0; i < _exetime.Count; i++ ) {
@@ -213,18 +221,30 @@ namespace FCFS
 
            AverageWaitingTIme.Text = ave.ToString();
 
-           for (int i = 0; i < _waittime.Count; i++)
+           dataGridView1.Columns.Add("", "");
+           dataGridView1.Columns[0].Width = 20;
+
+           for (int i = 0; i < _waittime.Count-1; i++)
            {
                _waitbox[i].Text = _waittime[i].ToString();
                _txtbox[i].Text = _copy[i].ToString();
                _labels[i].Text = _process[i];
                dataGridView1.Columns.Add(_labels[i].Text, _labels[i].Text);
-               dataGridView1.Columns[i].Width = int.Parse(_waitbox[i].Text);
-               //dataGridView1.Rows.Add(_waitbox[i].Text);
+               if(i+1 < _waittime.Count) {
+               dataGridView1.Columns[i+1].Width = _copy[i] * ratio;
+               }
            }
-           
+
+           int rowId = dataGridView1.Rows.Add();
+           DataGridViewRow row = dataGridView1.Rows[rowId];
+
+           for (int i = 0; i < _waittime.Count; i++) {
+               row.Cells[i].Value = _waittime[i];
+           }
+
            clearList();
         }
+
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
