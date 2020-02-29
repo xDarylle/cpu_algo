@@ -27,6 +27,19 @@ namespace FCFS
         int process;
         int numTxtBox = 4;
 
+        Color[] color = new Color[]
+        {
+            Color.AliceBlue,
+            Color.Red,
+            Color.Green,
+            Color.Yellow,
+            Color.Violet,
+            Color.Brown,
+            Color.Pink,
+            Color.Blue,
+            Color.BlueViolet,
+        };
+
         int x;
         int y;
 
@@ -37,7 +50,8 @@ namespace FCFS
             InitializeComponent();
         }
 
-        public void addBox() {
+        public void addBox()
+        {
 
             TextBox txtburstTime = new TextBox();
             txtburstTime.Width = 230;
@@ -69,38 +83,44 @@ namespace FCFS
             process++;
         }
 
-        private void initialize() {
+        private void initialize()
+        {
             clearList();
             clearListBox();
             clearPanel();
             dataGridView1.Columns.Clear();
-            
 
-            for (int i = 0; i < numTxtBox; i++) {
+
+            for (int i = 0; i < numTxtBox; i++)
+            {
                 addBox();
             }
             count.Text = numTxtBox.ToString();
         }
 
-        private void setDefaultVal() {
+        private void setDefaultVal()
+        {
             x = 40;
             y = 0;
             process = 0;
         }
 
-        private void clearListBox() {
+        private void clearListBox()
+        {
             _txtbox.Clear();
             _waitbox.Clear();
             _labels.Clear();
         }
 
-        private void clearList() {
+        private void clearList()
+        {
             _exetime.Clear();
             _waittime.Clear();
             _process.Clear();
         }
 
-        private void clearPanel() {
+        private void clearPanel()
+        {
             processPanel.Controls.Clear();
             processPanel.Controls.Clear();
         }
@@ -167,10 +187,10 @@ namespace FCFS
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
             processPanel.Controls.RemoveAt(processPanel.Controls.Count - 1);
-           
+
             _txtbox.RemoveAt(_txtbox.Count - 1);
             _labels.RemoveAt(_labels.Count - 1);
-           
+
             process--;
             y -= 40;
 
@@ -186,63 +206,92 @@ namespace FCFS
         private void Startbtn_Click(object sender, EventArgs e)
         {
 
-            foreach (var txt in _txtbox)
+            for (int k = 0; k < _txtbox.Count; k++)
             {
-                _exetime.Add(int.Parse(txt.Text));
+                if (string.IsNullOrEmpty(_txtbox[k].Text))
+                {
+                    MessageBox.Show("Please fill all blank fields");
+                    break;
+                }
+                else
+                {
+                    foreach (var txt in _txtbox)
+                    {
+                        _exetime.Add(int.Parse(txt.Text));
+                    }
+
+
+                    int[] _copy = new int[_exetime.Count];
+
+
+
+                    float ave = 0;
+
+                    _waittime.Add(0);
+
+                    _exetime.CopyTo(_copy);
+
+                    Array.Sort(_copy);
+
+                    for (int i = 0; i < _exetime.Count; i++)
+                    {
+                        _waittime.Add(_waittime[i] + _copy[i]);
+                    }
+
+                    for (int i = 0; i < _exetime.Count; i++)
+                    {
+                        for (int j = 0; j < _exetime.Count; j++)
+                        {
+                            if (_exetime[i] == _copy[j])
+                            {
+                                _process.Add(_labels[j].Text);
+                            }
+                        }
+                        ave += _waittime[i];
+                    }
+
+                    ave = ave / 4;
+
+                    AverageWaitingTIme.Text = ave.ToString();
+
+                    dataGridView1.Columns.Add("", "");
+                    dataGridView1.Columns[0].Width = 20;
+
+                    for (int i = 0; i < _waittime.Count - 1; i++)
+                    {
+                        _waitbox[i].Text = _waittime[i].ToString();
+                        _txtbox[i].Text = _copy[i].ToString();
+                        _labels[i].Text = _process[i];
+                        dataGridView1.Columns.Add(_labels[i].Text, _labels[i].Text);
+                        if (i + 1 < _waittime.Count)
+                        {
+                            dataGridView1.Columns[i + 1].Width = _copy[i] * ratio;
+                            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
+                        }
+                    }
+
+
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        dataGridView1.Columns[i].HeaderCell.Style.BackColor = color[i];
+                    }
+
+
+
+                    int rowId = dataGridView1.Rows.Add();
+                    DataGridViewRow row = dataGridView1.Rows[rowId];
+
+                    for (int i = 0; i < _waittime.Count; i++)
+                    {
+                        row.Cells[i].Value = _waittime[i];
+                    }
+
+                    clearList();
+                    break;
+                }
             }
 
-
-            int[] _copy = new int[_exetime.Count];
-
-            
-
-            float ave = 0;
-
-            _waittime.Add(0);
-           
-            _exetime.CopyTo(_copy);
-
-           Array.Sort(_copy);
-           
-           for (int i = 0; i < _exetime.Count; i++ ) {
-                   _waittime.Add(_waittime[i] + _copy[i]);
-           }
-
-           for (int i = 0; i < _exetime.Count; i++ ) {
-               for (int j = 0; j < _exetime.Count; j++ ) {
-                   if(_exetime[i] == _copy[j]) {
-                       _process.Add(_labels[j].Text);
-                   }
-               }
-               ave += _waittime[i];
-           }
-
-           ave = ave / 4;
-
-           AverageWaitingTIme.Text = ave.ToString();
-
-           dataGridView1.Columns.Add("", "");
-           dataGridView1.Columns[0].Width = 20;
-
-           for (int i = 0; i < _waittime.Count-1; i++)
-           {
-               _waitbox[i].Text = _waittime[i].ToString();
-               _txtbox[i].Text = _copy[i].ToString();
-               _labels[i].Text = _process[i];
-               dataGridView1.Columns.Add(_labels[i].Text, _labels[i].Text);
-               if(i+1 < _waittime.Count) {
-               dataGridView1.Columns[i+1].Width = _copy[i] * ratio;
-               }
-           }
-
-           int rowId = dataGridView1.Rows.Add();
-           DataGridViewRow row = dataGridView1.Rows[rowId];
-
-           for (int i = 0; i < _waittime.Count; i++) {
-               row.Cells[i].Value = _waittime[i];
-           }
-
-           clearList();
+          
         }
 
 
@@ -257,8 +306,10 @@ namespace FCFS
             dataGridView1.Rows.Clear();
         }
 
-        private void count_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter)) {
+        private void count_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
                 clearListBox();
                 clearPanel();
                 setDefaultVal();
@@ -270,7 +321,7 @@ namespace FCFS
             }
         }
     }
-  }
+}
 
-    
+
 
