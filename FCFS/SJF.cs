@@ -110,9 +110,10 @@ namespace FCFS
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
 
             dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            //dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 118, 190);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
 
             processPanel.AutoScroll = false;
             processPanel.HorizontalScroll.Enabled = false;
@@ -187,6 +188,7 @@ namespace FCFS
             float ave = 0;
 
             _waittime.Add(0);
+            dataGridView1.Columns[0].Width = 50;
 
             _exetime.CopyTo(_copy);
 
@@ -216,8 +218,11 @@ namespace FCFS
                _waitbox[i].Text = _waittime[i].ToString();
                _txtbox[i].Text = _copy[i].ToString();
                _labels[i].Text = _process[i];
+               dataGridView1.Columns.Add(_labels[i].Text, _labels[i].Text);
+               dataGridView1.Columns[i].Width = int.Parse(_waitbox[i].Text);
+               //dataGridView1.Rows.Add(_waitbox[i].Text);
            }
-
+           
            clearList();
         }
 
@@ -228,6 +233,8 @@ namespace FCFS
             clearPanel();
             setDefaultVal();
             initialize();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Rows.Clear();
         }
 
         private void count_KeyPress(object sender, KeyPressEventArgs e) {
