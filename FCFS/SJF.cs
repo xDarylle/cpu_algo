@@ -24,6 +24,8 @@ namespace FCFS
         List<Label> _labels = new List<Label>();
         List<string> _process = new List<string>();
 
+        Random rand = new Random();
+
         int process;
         int numTxtBox = 4;
 
@@ -32,7 +34,6 @@ namespace FCFS
             Color.AliceBlue,
             Color.Red,
             Color.Green,
-            Color.Yellow,
             Color.Violet,
             Color.Brown,
             Color.Pink,
@@ -42,6 +43,7 @@ namespace FCFS
 
         int x;
         int y;
+        int num=1;
 
         int ratio = 30;
 
@@ -103,6 +105,8 @@ namespace FCFS
             x = 40;
             y = 0;
             process = 0;
+
+            bunifuFlatButton3.Enabled = false;
         }
 
         private void clearListBox()
@@ -142,7 +146,6 @@ namespace FCFS
             //dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(27, 118, 190);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-
 
             processPanel.AutoScroll = false;
             processPanel.HorizontalScroll.Enabled = false;
@@ -255,25 +258,25 @@ namespace FCFS
                     AverageWaitingTIme.Text = ave.ToString();
 
                     dataGridView1.Columns.Add("", "");
-                    dataGridView1.Columns[0].Width = 20;
+                    dataGridView1.Columns[0].Width = 30;
+                    dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.White;
 
-                    for (int i = 0; i < _waittime.Count - 1; i++)
-                    {
+                    for (int i = 0; i < _waittime.Count - 1; i++) {
                         _waitbox[i].Text = _waittime[i].ToString();
                         _txtbox[i].Text = _copy[i].ToString();
                         _labels[i].Text = _process[i];
                         dataGridView1.Columns.Add(_labels[i].Text, _labels[i].Text);
-                        if (i + 1 < _waittime.Count)
-                        {
+                        if (i + 1 < _waittime.Count) {
                             dataGridView1.Columns[i + 1].Width = _copy[i] * ratio;
-                            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
+                            dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
                         }
                     }
 
-
-                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    for (int i = 1; i < dataGridView1.Columns.Count-1; i++)
                     {
-                        dataGridView1.Columns[i].HeaderCell.Style.BackColor = color[i];
+                        int temp = rand.Next(1,7);
+                        num = check(temp);
+                        dataGridView1.Columns[i].HeaderCell.Style.BackColor = color[num];
                     }
 
 
@@ -287,13 +290,21 @@ namespace FCFS
                     }
 
                     clearList();
+
+                    Startbtn.Enabled = false;
+                    bunifuFlatButton3.Enabled = true;
                     break;
                 }
             }
-
-          
         }
 
+        public int check(int i) {
+            if(i == num) {
+                i = rand.Next(1,8);
+                check(i);
+            }
+            return i;
+        }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
@@ -304,6 +315,9 @@ namespace FCFS
             initialize();
             dataGridView1.Columns.Clear();
             dataGridView1.Rows.Clear();
+            Startbtn.Enabled = true;
+            bunifuFlatButton3.Enabled = false;
+
         }
 
         private void count_KeyPress(object sender, KeyPressEventArgs e)

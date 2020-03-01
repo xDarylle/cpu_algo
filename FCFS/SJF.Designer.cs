@@ -28,9 +28,10 @@ namespace FCFS
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -75,9 +76,10 @@ namespace FCFS
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1066, 0);
+            this.label1.Location = new System.Drawing.Point(1421, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 25);
+            this.label1.Size = new System.Drawing.Size(26, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "x";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -87,8 +89,9 @@ namespace FCFS
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(29)))), ((int)(((byte)(41)))));
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(-1, -1);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1103, 47);
+            this.panel2.Size = new System.Drawing.Size(1471, 58);
             this.panel2.TabIndex = 4;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
@@ -98,9 +101,10 @@ namespace FCFS
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(183)))), ((int)(((byte)(119)))));
             this.panel12.Controls.Add(this.label11);
-            this.panel12.Location = new System.Drawing.Point(-1, 45);
+            this.panel12.Location = new System.Drawing.Point(-1, 55);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(1100, 35);
+            this.panel12.Size = new System.Drawing.Size(1467, 43);
             this.panel12.TabIndex = 5;
             // 
             // label11
@@ -108,18 +112,20 @@ namespace FCFS
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(411, 7);
+            this.label11.Location = new System.Drawing.Point(548, 9);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(253, 21);
+            this.label11.Size = new System.Drawing.Size(318, 28);
             this.label11.TabIndex = 1;
             this.label11.Text = "Shortest Job First Non Pre-emptive";
             // 
             // processPanel
             // 
             this.processPanel.BackColor = System.Drawing.Color.White;
-            this.processPanel.Location = new System.Drawing.Point(41, 180);
+            this.processPanel.Location = new System.Drawing.Point(55, 222);
+            this.processPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.processPanel.Name = "processPanel";
-            this.processPanel.Size = new System.Drawing.Size(685, 220);
+            this.processPanel.Size = new System.Drawing.Size(913, 271);
             this.processPanel.TabIndex = 6;
             this.processPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.processPanel_Paint);
             // 
@@ -127,39 +133,44 @@ namespace FCFS
             // 
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeight = 60;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Average});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 439);
+            this.dataGridView1.Location = new System.Drawing.Point(55, 540);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView1.Size = new System.Drawing.Size(685, 145);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.Size = new System.Drawing.Size(913, 178);
             this.dataGridView1.TabIndex = 18;
             // 
             // Column1
@@ -215,14 +226,14 @@ namespace FCFS
             this.Startbtn.IconVisible = true;
             this.Startbtn.IconZoom = 90D;
             this.Startbtn.IsTab = false;
-            this.Startbtn.Location = new System.Drawing.Point(931, 525);
-            this.Startbtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Startbtn.Location = new System.Drawing.Point(1241, 646);
+            this.Startbtn.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Startbtn.Name = "Startbtn";
             this.Startbtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(225)))), ((int)(((byte)(87)))));
             this.Startbtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(202)))), ((int)(((byte)(51)))));
             this.Startbtn.OnHoverTextColor = System.Drawing.Color.White;
             this.Startbtn.selected = false;
-            this.Startbtn.Size = new System.Drawing.Size(130, 44);
+            this.Startbtn.Size = new System.Drawing.Size(173, 54);
             this.Startbtn.TabIndex = 8;
             this.Startbtn.Text = "                   START";
             this.Startbtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -252,14 +263,14 @@ namespace FCFS
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 90D;
             this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(931, 456);
-            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(1241, 561);
+            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(207)))));
             this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(25)))), ((int)(((byte)(72)))));
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(130, 44);
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(173, 54);
             this.bunifuFlatButton1.TabIndex = 20;
             this.bunifuFlatButton1.Text = "                     ADD";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -270,9 +281,10 @@ namespace FCFS
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(41, 117);
+            this.panel5.Location = new System.Drawing.Point(55, 144);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(685, 316);
+            this.panel5.Size = new System.Drawing.Size(913, 389);
             this.panel5.TabIndex = 7;
             // 
             // bunifuFlatButton2
@@ -297,14 +309,14 @@ namespace FCFS
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(789, 456);
-            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(1052, 561);
+            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(187)))), ((int)(((byte)(81)))));
             this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(136)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton2.selected = false;
-            this.bunifuFlatButton2.Size = new System.Drawing.Size(130, 44);
+            this.bunifuFlatButton2.Size = new System.Drawing.Size(173, 54);
             this.bunifuFlatButton2.TabIndex = 21;
             this.bunifuFlatButton2.Text = "                 REMOVE";
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -316,9 +328,10 @@ namespace FCFS
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(745, 244);
+            this.panel1.Location = new System.Drawing.Point(993, 300);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(330, 39);
+            this.panel1.Size = new System.Drawing.Size(440, 48);
             this.panel1.TabIndex = 14;
             // 
             // label4
@@ -326,9 +339,10 @@ namespace FCFS
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(10, 9);
+            this.label4.Location = new System.Drawing.Point(13, 11);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(162, 21);
+            this.label4.Size = new System.Drawing.Size(204, 28);
             this.label4.TabIndex = 0;
             this.label4.Text = "Average Waiting Time";
             // 
@@ -336,18 +350,20 @@ namespace FCFS
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.Controls.Add(this.AverageWaitingTIme);
-            this.panel7.Location = new System.Drawing.Point(745, 244);
+            this.panel7.Location = new System.Drawing.Point(993, 300);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(330, 189);
+            this.panel7.Size = new System.Drawing.Size(440, 233);
             this.panel7.TabIndex = 8;
             // 
             // AverageWaitingTIme
             // 
             this.AverageWaitingTIme.AutoSize = true;
             this.AverageWaitingTIme.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AverageWaitingTIme.Location = new System.Drawing.Point(104, 66);
+            this.AverageWaitingTIme.Location = new System.Drawing.Point(139, 81);
+            this.AverageWaitingTIme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AverageWaitingTIme.Name = "AverageWaitingTIme";
-            this.AverageWaitingTIme.Size = new System.Drawing.Size(0, 86);
+            this.AverageWaitingTIme.Size = new System.Drawing.Size(0, 106);
             this.AverageWaitingTIme.TabIndex = 0;
             // 
             // bunifuFlatButton3
@@ -372,14 +388,14 @@ namespace FCFS
             this.bunifuFlatButton3.IconVisible = true;
             this.bunifuFlatButton3.IconZoom = 90D;
             this.bunifuFlatButton3.IsTab = false;
-            this.bunifuFlatButton3.Location = new System.Drawing.Point(789, 524);
-            this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.bunifuFlatButton3.Location = new System.Drawing.Point(1052, 645);
+            this.bunifuFlatButton3.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.bunifuFlatButton3.Name = "bunifuFlatButton3";
             this.bunifuFlatButton3.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(183)))), ((int)(((byte)(119)))));
             this.bunifuFlatButton3.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(202)))), ((int)(((byte)(51)))));
             this.bunifuFlatButton3.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton3.selected = false;
-            this.bunifuFlatButton3.Size = new System.Drawing.Size(130, 44);
+            this.bunifuFlatButton3.Size = new System.Drawing.Size(173, 54);
             this.bunifuFlatButton3.TabIndex = 23;
             this.bunifuFlatButton3.Text = "                   CLEAR";
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -390,10 +406,10 @@ namespace FCFS
             // count
             // 
             this.count.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.count.Location = new System.Drawing.Point(14, 51);
-            this.count.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.count.Location = new System.Drawing.Point(19, 63);
+            this.count.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.count.Name = "count";
-            this.count.Size = new System.Drawing.Size(299, 35);
+            this.count.Size = new System.Drawing.Size(397, 42);
             this.count.TabIndex = 24;
             this.count.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.count_KeyPress);
             // 
@@ -402,8 +418,9 @@ namespace FCFS
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
             this.panel8.Controls.Add(this.label5);
             this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(333, 39);
+            this.panel8.Size = new System.Drawing.Size(444, 48);
             this.panel8.TabIndex = 16;
             // 
             // label5
@@ -411,9 +428,10 @@ namespace FCFS
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(10, 9);
+            this.label5.Location = new System.Drawing.Point(13, 11);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 21);
+            this.label5.Size = new System.Drawing.Size(177, 28);
             this.label5.TabIndex = 0;
             this.label5.Text = "Number of Process";
             // 
@@ -422,9 +440,10 @@ namespace FCFS
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.Controls.Add(this.panel8);
             this.panel9.Controls.Add(this.count);
-            this.panel9.Location = new System.Drawing.Point(745, 117);
+            this.panel9.Location = new System.Drawing.Point(993, 144);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(333, 103);
+            this.panel9.Size = new System.Drawing.Size(444, 127);
             this.panel9.TabIndex = 15;
             // 
             // panel3
@@ -432,9 +451,10 @@ namespace FCFS
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(118)))), ((int)(((byte)(190)))));
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(41, 117);
+            this.panel3.Location = new System.Drawing.Point(55, 144);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(685, 39);
+            this.panel3.Size = new System.Drawing.Size(913, 48);
             this.panel3.TabIndex = 15;
             // 
             // label3
@@ -442,9 +462,10 @@ namespace FCFS
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(420, 9);
+            this.label3.Location = new System.Drawing.Point(560, 11);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 21);
+            this.label3.Size = new System.Drawing.Size(127, 28);
             this.label3.TabIndex = 1;
             this.label3.Text = "Waiting Time";
             // 
@@ -453,17 +474,18 @@ namespace FCFS
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(169, 10);
+            this.label2.Location = new System.Drawing.Point(225, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 21);
+            this.label2.Size = new System.Drawing.Size(103, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "Burst Time";
             // 
             // SJF
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 607);
+            this.ClientSize = new System.Drawing.Size(1453, 747);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel9);
@@ -478,6 +500,7 @@ namespace FCFS
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SJF";
             this.Text = "SJF";
             this.Load += new System.EventHandler(this.SJF_Load);
