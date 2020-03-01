@@ -43,7 +43,7 @@ namespace FCFS
 
         int x;
         int y;
-        int num=1;
+        int num = 1;
 
         int ratio = 30;
 
@@ -131,7 +131,9 @@ namespace FCFS
 
         private void label1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Start start = new Start();
+            start.Show();
+            this.Hide();
         }
 
         private void SJF_Load(object sender, EventArgs e)
@@ -213,7 +215,7 @@ namespace FCFS
             {
                 if (string.IsNullOrEmpty(_txtbox[k].Text))
                 {
-                    MessageBox.Show("Please fill all blank fields");
+                    MessageBox.Show("Please fill all blank fields","ERROR",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 else
@@ -225,8 +227,6 @@ namespace FCFS
 
 
                     int[] _copy = new int[_exetime.Count];
-
-
 
                     float ave = 0;
 
@@ -261,20 +261,22 @@ namespace FCFS
                     dataGridView1.Columns[0].Width = 30;
                     dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.White;
 
-                    for (int i = 0; i < _waittime.Count - 1; i++) {
+                    for (int i = 0; i < _waittime.Count - 1; i++)
+                    {
                         _waitbox[i].Text = _waittime[i].ToString();
                         _txtbox[i].Text = _copy[i].ToString();
                         _labels[i].Text = _process[i];
                         dataGridView1.Columns.Add(_labels[i].Text, _labels[i].Text);
-                        if (i + 1 < _waittime.Count) {
+                        if (i + 1 < _waittime.Count)
+                        {
                             dataGridView1.Columns[i + 1].Width = _copy[i] * ratio;
                             dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopRight;
                         }
                     }
 
-                    for (int i = 1; i < dataGridView1.Columns.Count-1; i++)
+                    for (int i = 0; i < dataGridView1.Columns.Count - 1; i++)
                     {
-                        int temp = rand.Next(1,7);
+                        int temp = rand.Next(1, 7);
                         num = check(temp);
                         dataGridView1.Columns[i].HeaderCell.Style.BackColor = color[num];
                     }
@@ -298,11 +300,14 @@ namespace FCFS
             }
         }
 
-        public int check(int i) {
-            if(i == num) {
-                i = rand.Next(1,8);
+        public int check(int i)
+        {
+            if (i == num)
+            {
+                i = rand.Next(1, 8);
                 check(i);
             }
+
             return i;
         }
 
@@ -313,7 +318,8 @@ namespace FCFS
             clearPanel();
             setDefaultVal();
             initialize();
-            dataGridView1.Columns.Clear();
+
+            dataGridView1.Refresh();
             dataGridView1.Rows.Clear();
             Startbtn.Enabled = true;
             bunifuFlatButton3.Enabled = false;
@@ -333,6 +339,11 @@ namespace FCFS
                 initialize();
 
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
