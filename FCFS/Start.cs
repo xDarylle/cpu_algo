@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,9 +20,10 @@ namespace FCFS
         public Start()
         {
             InitializeComponent();
+           
         }
 
-   
+        int i = 0;
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -36,8 +37,23 @@ namespace FCFS
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            this.timer1.Start();
-            progressBarFCFS.Show();
+            if(choices.selectedIndex == -1)
+            {
+                MessageBox.Show("Please select CPU algorithm first","ERROR", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+            }
+            else if(choices.selectedIndex == 1)
+            {
+                this.timer1.Start();
+                i = choices.selectedIndex;
+                progressBarFCFS.Show();
+            }
+            else if(choices.selectedIndex == 2)
+            {
+                i = choices.selectedIndex;
+                this.timer1.Start();
+                progressBarFCFS.Show();
+            }
+            
         }
 
         private void bunifuGradientPanel1_MouseMove(object sender, MouseEventArgs e)
@@ -70,14 +86,29 @@ namespace FCFS
         {
             timeValue += 10;
             progressBarFCFS.Value = timeValue;
-            if(progressBarFCFS.Value == 100)
+            if(i == 1)
             {
-                progressBarFCFS.Value = 0;
-                FCFS_Main fcsf = new FCFS_Main();
-                fcsf.Show();
-                this.Hide();
-                timer1.Stop();
+                if (progressBarFCFS.Value == 100)
+                {
+                    progressBarFCFS.Value = 0;
+                    FCFS_Main fcsf = new FCFS_Main();
+                    fcsf.Show();
+                    this.Hide();
+                    timer1.Stop();
+                }
             }
+            else if(i == 2)
+            {
+                if (progressBarFCFS.Value == 100)
+                {
+                    progressBarFCFS.Value = 0;
+                    SJF sjf = new SJF();
+                    sjf.Show();
+                    this.Hide();
+                    timer1.Stop();
+                }
+            }
+             
         }
     }
 }
